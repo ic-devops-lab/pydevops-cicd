@@ -1,2 +1,43 @@
-# pydevops-cicd
-The code for CI/CD section of Python for DevOps course (https://www.udemy.com/course/python-devops)
+# Python for DevOps: CI/CD for Python project
+
+This repo contains te code for CI/CD section of Python for DevOps course (https://www.udemy.com/course/python-devops)
+
+## Plan of implementation
+
+- [x] project (code files), see [implementation plan](./docs/implementation-plan.md)
+- [] Simple GHA workflow
+- [] Lining and format checks
+- [] Typing check
+- [] Security check
+- [] Test automation
+- [] Project build
+- [] Publish to both TestPyPi and PyPi when a new tag is pushed
+
+## Target Workflow overview
+
+![Target Workflow Overview](./docs/img/target-workflow-overview.png)
+
+## Project installation
+
+From the project's root
+```bash
+python -m venv .venv
+source .venv/bin/activate
+(venv) which python
+(venv) pip install --upgrade pip
+
+# install dependencies
+(venv) pip install -e .
+```
+> All futher commands are assumed to be executed in the project virtual environment
+
+
+## Using CLI tool
+
+```bash
+# usage
+check-urls <URL1> <URL2> ... [--timeout <seconds>] [--verbose]/[-v]
+
+# example
+check-urls http://localhost https://google.com https://httpbingo.org/status/404 --timeout=4 -v
+```

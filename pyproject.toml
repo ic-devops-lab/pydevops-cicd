@@ -17,6 +17,8 @@ dependencies = [
 dev = [
   "ruff",
   "black",
+  "mypy",
+  "bandit",
 ]
 
 [project.scripts]
@@ -67,3 +69,11 @@ ignore = []
 [tool.black]
 line-length = 88
 target-version = ["py313"]
+
+[tool.mypy]  # https://mypy.readthedocs.io/en/stable/config_file.html
+warn_return_any = true
+warn_unused_configs = true
+# ignore_missing_imports = true
+
+[tool.bandit]  # https://bandit.readthedocs.io/en/latest/config.html
+exclude_dirs = [".venv", "__pychache__", "build", "dist"]

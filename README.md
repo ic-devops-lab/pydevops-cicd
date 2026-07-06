@@ -6,7 +6,7 @@ This repo contains te code for CI/CD section of Python for DevOps course (https:
 
 - [x] project (code files), see [implementation plan](./docs/implementation-plan.md)
 - [x] Simple GHA workflow
-- [] Lining and format checks
+- [x] Lining and format checks
 - [] Typing check
 - [] Security check
 - [] Test automation
@@ -34,7 +34,7 @@ source .venv/bin/activate
 (.venv) pip install -e .
 
 # install dependencies including dev dependencies
-(.venv) pip install ".[dev]"
+(.venv) pip install -e ".[dev]"
 ```
 > All futher commands are assumed to be executed in the project virtual environment
 
@@ -60,6 +60,8 @@ From the project's root
 ```bash
 black --check .
 ruff check .
+mypy src/
+bandit -c pyproject.toml -r .
 ```
 
 ---

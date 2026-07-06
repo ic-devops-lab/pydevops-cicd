@@ -1,4 +1,5 @@
 import logging
+from typing import Collection
 
 import click
 
@@ -16,7 +17,7 @@ logger = logging.getLogger(__name__)
 @click.argument("urls", nargs=-1)
 @click.option("--timeout", default=5, help="Timeout for HTTP requests in seconds.")
 @click.option("--verbose", "-v", is_flag=True, help="Enable verbose output.")
-def main(urls, timeout, verbose):
+def main(urls: Collection[str], timeout: int, verbose: bool) -> None:
     if verbose:
         logger.setLevel(logging.DEBUG)
         logger.debug("Verbose mode enabled.")
@@ -34,7 +35,7 @@ def main(urls, timeout, verbose):
 
     logger.info(f"Checking {len(urls)} URLs with a timeout of {timeout} seconds.")
 
-    result = check_urls(urls, timeout)
+    result: dict[str, str] = check_urls(urls, timeout)
 
     for url, status in result.items():
         fg_color = "green" if "OK" in status else "red"

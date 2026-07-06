@@ -1,6 +1,8 @@
-# IDE
+# IDE && Local environment
 .vscode/
 **.code-workspace
+**tmp/
+**temp/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

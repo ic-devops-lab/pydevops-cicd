@@ -52,6 +52,31 @@ jobs:
       - name: Automated Tests
         run: pytest
 
+  build-and-upload:
+    needs:
+      - static-checks
+      - tests
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install build package
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+      - name: Build the Python Package
+        run: |
+          python -m build
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          path: dist/
+          name: simple_http_checker-${{ github.sha }}
+
   release:
     needs:
       - static-checks

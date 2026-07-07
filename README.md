@@ -9,7 +9,7 @@ This repo contains te code for CI/CD section of Python for DevOps course (https:
 - [x] Lining and format checks
 - [x] Typing check
 - [x] Security check
-- [] Test automation
+- [x] Test automation
 - [] Project build
 - [] Publish to both TestPyPi and PyPi when a new tag is pushed
 
@@ -23,7 +23,7 @@ This repo contains te code for CI/CD section of Python for DevOps course (https:
 
 ## Project installation
 
-From the project's root
+From the project's root:
 ```bash
 python -m venv .venv
 source .venv/bin/activate
@@ -56,7 +56,7 @@ check-urls http://localhost https://google.com https://httpbingo.org/status/404 
 
 ### Manual commands
 
-From the project's root
+From the project's root:
 ```bash
 black --check .
 ruff check .
@@ -64,4 +64,13 @@ mypy src/
 bandit -c pyproject.toml -r .
 ```
 
+---
+
+## Build
+
+From the project's root:
+```bash
+python -m build
+```
+> Resulting `.whl` and `.tar.gz` files could be found in the `dist` folder.
 ---

@@ -15,12 +15,13 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-  "ruff",
-  "black",
-  "mypy",
   "bandit",
+  "black",
+  "build",
+  "mypy",
   "pytest",
   "pytest-mock",
+  "ruff",
 ]
 
 [project.scripts]

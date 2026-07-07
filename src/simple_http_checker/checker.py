@@ -19,7 +19,7 @@ def check_urls(urls: Collection[str], timeout: int = 5) -> dict[str, str]:
     """
 
     logger.info(f"Starting check for {len(urls)} URLs with a timeout of {timeout}s.")
-    results = {}
+    results: dict[str, str] = {}
 
     for url in urls:
         status = "UNKNOWN"

@@ -7,8 +7,8 @@ This repo contains te code for CI/CD section of Python for DevOps course (https:
 - [x] project (code files), see [implementation plan](./docs/implementation-plan.md)
 - [x] Simple GHA workflow
 - [x] Lining and format checks
-- [] Typing check
-- [] Security check
+- [x] Typing check
+- [x] Security check
 - [] Test automation
 - [] Project build
 - [] Publish to both TestPyPi and PyPi when a new tag is pushed

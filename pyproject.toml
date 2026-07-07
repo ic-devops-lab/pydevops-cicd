@@ -19,6 +19,8 @@ dev = [
   "black",
   "mypy",
   "bandit",
+  "pytest",
+  "pytest-mock",
 ]
 
 [project.scripts]
@@ -76,4 +78,7 @@ warn_unused_configs = true
 # ignore_missing_imports = true
 
 [tool.bandit]  # https://bandit.readthedocs.io/en/latest/config.html
-exclude_dirs = [".venv", "__pychache__", "build", "dist"]
+exclude_dirs = [".venv", "__pycache__", "build", "dist"]
+
+[tool.pytest.ini_options]
+addopts = "-rA -v -s"

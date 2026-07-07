@@ -33,10 +33,11 @@ def main(urls: Collection[str], timeout: int, verbose: bool) -> None:
         )
         return
 
-    logger.info(f"Checking {len(urls)} URLs with a timeout of {timeout} seconds.")
+    logger.info(f"Checking {len(urls)} URL(s) with a timeout of {timeout} seconds.")
 
     result: dict[str, str] = check_urls(urls, timeout)
 
+    click.echo("\n--- Results ---")
     for url, status in result.items():
         fg_color = "green" if "OK" in status else "red"
         click.secho(f"{url:<40} -> {status}", fg=fg_color)

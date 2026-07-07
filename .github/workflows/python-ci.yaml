@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
+  static-checks:
     runs-on: [self-hosted, linux, x64]
     steps:
       - name: Checkout Repo
@@ -31,3 +31,33 @@ jobs:
         run: mypy src/
       - name: Static Security Check
         run: bandit -c pyproject.toml -r .
+
+  tests:
+    runs-on: [self-hosted, linux, x64]
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "{{ matrix.python-version }}"
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ".[dev]"
+      - name: Automated Tests
+        run: pytest
+
+  release:
+    needs:
+      - static-checks
+      - tests
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - name: Release
+        run: |
+          echo "Release step would go here. This is a placeholder for actual release logic."

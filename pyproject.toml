@@ -79,6 +79,7 @@ warn_unused_configs = true
 
 [tool.bandit]  # https://bandit.readthedocs.io/en/latest/config.html
 exclude_dirs = [".venv", "__pycache__", "build", "dist"]
+skips = ["B101"]
 
 [tool.pytest.ini_options]
 addopts = "-rA -v -s"

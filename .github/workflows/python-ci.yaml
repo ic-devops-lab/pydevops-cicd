@@ -79,8 +79,7 @@ jobs:
 
   release:
     needs:
-      - static-checks
-      - tests
+      - build-and-upload
     runs-on: [self-hosted, linux, x64]
     steps:
       - name: Release

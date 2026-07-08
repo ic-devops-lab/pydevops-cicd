@@ -10,8 +10,8 @@ This repo contains te code for CI/CD section of Python for DevOps course (https:
 - [x] Typing check
 - [x] Security check
 - [x] Test automation
-- [] Project build
-- [] Publish to both TestPyPi and PyPi when a new tag is pushed
+- [x] Project build
+- [] Publish to both TestPyPi and PyPi when a new release is published
 
 ---
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "simple_http_checker"
-version = "0.1.0"
+version = "0.0.0"
 description = "A simple CLI tool to check the status of URLs."
 readme = "readme.md"
 requires-python = ">=3.9"
@@ -22,6 +22,7 @@ dev = [
   "pytest",
   "pytest-mock",
   "ruff",
+  "python-semantic-release",
 ]
 
 [project.scripts]
@@ -84,3 +85,28 @@ skips = ["B101"]
 
 [tool.pytest.ini_options]
 addopts = "-rA -v -s"
+
+[tool.semantic_release]
+version_toml = ["pyproject.toml:project.version"]
+allow_zero_version = true
+build_command = "pip install build && python -m build"
+# build_command ="env | sort && python --version && python -m build"
+build_command_env = ["LD_LIBRARY_PATH"]
+dist_path = "dist/"
+upload_topypi = false
+upload_to_release = true
+hvcs = "github"
+commit_message = "chore(release): {version} [skip ci]"
+
+[tool.semantic_release.branches.main]
+match = "main"
+prerelease = false
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG.md"
+# mode = "init"
+
+[tool.semantic_release.commit_parser_options]
+allowed_tags = ["build", "ci", "chore", "docs", "feat", "fix", "perf", "refactor", "revert", "style", "test"]
+minor_tags = ["feat"]
+patch_tags = ["fix", "perf", "refactor", "style", "test"]

@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: dist/
-          name: simple-http-checker-${{ github.sha }}
+          name: ic-simple-http-checker-${{ github.sha }}
   publish-testpypi:
     needs: build
     runs-on: [self-hosted, linux, x64]
@@ -39,7 +39,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
-          name: simple-http-checker-${{ github.sha }}
+          name: ic-simple-http-checker-${{ github.sha }}
           path: dist/
       - name: Publish to TestPyPI
         uses: pypa/gh-action-pypi-publish@release/v1

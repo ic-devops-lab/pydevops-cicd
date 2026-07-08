@@ -23,7 +23,7 @@ jobs:
       - name: Build Package
         run: |
           python -m build
-      - name: Upload Artifact:
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           path: dist/
@@ -31,6 +31,7 @@ jobs:
   publish-testpypi:
     needs: build
     runs-on: [self-hosted, linux, x64]
+    environment: dev
     permissions:
       contents: read
       id-token: write
